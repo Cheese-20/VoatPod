@@ -1,0 +1,38 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 15px;
+    border-bottom: 1px solid #f1f1f1;
+
+}
+
+.logo{
+    width: 15%;
+}
+
+.nav-links{
+   /* list-style: none; */
+   text-decoration: none;
+}
+
+a{ 
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav-links li{
+    display: inline-block;
+    padding: 0 20px;
+    text-decoration: none;
+}
+
+.nav-links li a{
+   transition: all 0.3s ease 0s;
+}
+
+.nav-links li a:hover{
+    color: #9d8b84;
+
+}
+

@@ -1,0 +1,19 @@
+.Big{
+    background-color: #fff;
+    border-radius: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.35);
+    min-width: 40vh;
+    min-height: 40vh;
+    margin-right: 10px;
+}
+
+.Card{
+    border-radius: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.35);
+    min-height: 35vh;
+    max-width: 35vh;
+    max-height: 50vh;
+    min-width: 20vh;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}

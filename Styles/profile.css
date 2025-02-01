@@ -1,0 +1,10 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.profile{
+    background: linear-gradient(to right, #891609 ,#DFA06E);
+    min-height: 100vh;
+}

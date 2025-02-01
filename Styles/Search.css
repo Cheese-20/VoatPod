@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.search{
+    background: linear-gradient(to right, #891609 ,#DFA06E);
+    min-height: 100vh;
+    height: 100%;
+}
+
+.SBox{
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.SearchBox{
+    background-color: transparent;
+    border: none;
+    width:70%;
+    color: #ffff;
+    height: 30px;
+    font-size: large;
+    border-bottom: 1px solid #ffff;
+}
+
+.SearchWrapper {
+    position: relative;
+    display: flex;
+}
+
+
+.SearchButton {
+    border: none;
+    cursor: pointer;
+    width : 20px;
+    height : 20px;
+}
+
+.SearchResults{
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    grid-gap: 10px;
+    padding-left: 20px;
+    padding-top: 10px;
+    margin-top: 20px;
+    margin-left : 60px; 
+}
