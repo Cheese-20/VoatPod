@@ -38,7 +38,7 @@ export const getFavoriteForEpisode = async ({ userEmail, showId, season, episode
     .eq("show_id", showId)
     .eq("season", Number(season))
     .eq("episode", Number(episode))
-    .single();
+    .maybeSingle();
 
   return { data, error };
 };
