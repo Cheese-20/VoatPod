@@ -127,13 +127,21 @@ export const EpisodeDetail = () => {
         <div className="detail-meta">
           <div className="episode-title-row">
             <h1>{episode.title}</h1>
-            <button className={isFavorite ? "favorite-btn active" : "favorite-btn"} onClick={handleFavoriteClick} disabled={favoriteLoading}>
-              {isFavorite ? "★" : "☆"}
-            </button>
           </div>
           <div className="detail-tags">
             <span>{showData.title}</span>
-            <span>Season {seasonNumber}</span>
+            <span className="season-tag">
+              Season {seasonNumber}
+            
+            </span>
+              <button
+                className={isFavorite ? "favorite-btn active" : "favorite-btn"}
+                onClick={handleFavoriteClick}
+                disabled={favoriteLoading}
+                aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
+              >
+                {isFavorite ? "★" : "☆"}
+              </button>
           </div>
           <p>{episode.description || "No episode description available."}</p>
         </div>
