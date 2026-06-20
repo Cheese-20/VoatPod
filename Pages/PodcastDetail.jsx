@@ -59,6 +59,16 @@ export const PodcastDetail = () => {
   const currentSeason = seasons.find((season) => String(season.season) === String(selectedSeason)) || seasons[0] || null;
   const episodes = Array.isArray(currentSeason?.episodes) ? currentSeason.episodes : [];
 
+  const formatDate = (value) => {
+    if (!value) return "Unknown date";
+    const date = new Date(value);
+    return date.toLocaleDateString(undefined, {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+  };
+
   return (
     <div className="podcast-detail-page">
       <button className="back-btn" onClick={() => navigate(-1)}>
@@ -108,10 +118,13 @@ export const PodcastDetail = () => {
                 role="button"
                 tabIndex={0}
               >
-                <div>
-                  <strong>{episode.title}</strong>
-                  <p>{episode.description}</p>
-                </div>
+                  <div className="episode-main no-thumb">
+                    <strong>{episode.title}</strong>
+                    <p>{episode.description}</p>
+                  </div>
+                  <div className="episode-meta">
+                    <span>{formatDate(episode.updated || episode.pubDate || episode.pub_date)}</span>
+                  </div>
               </li>
             ))
           ) : (

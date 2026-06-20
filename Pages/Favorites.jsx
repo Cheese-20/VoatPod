@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { PodNavigation } from "../Components/navigation";
 import { getFavoritesForUser, toggleFavoriteEpisode } from "../config/favorites";
 import "../Styles/Search.css";
+import "../Styles/home.css";
 
 export const Favorites = () => {
   const [favorites, setFavorites] = useState([]);
@@ -60,7 +61,7 @@ export const Favorites = () => {
   return (
     <div className="page-container">
       <PodNavigation />
-      <div className="page-content">
+      <div className="page-content favorites-page">
         <h1>Favorites</h1>
         {!userEmail && (
           <div className="no-results">
@@ -84,19 +85,23 @@ export const Favorites = () => {
 
         {error && <div className="error-message">{error}</div>}
 
-        <div className="results-grid">
+        <div className="favorites-list">
           {favorites.map((fav) => (
-            <div key={`${fav.show_id}-${fav.season}-${fav.episode}`} className="search-result-card">
-              <div className="result-header">
-                <h2>{fav.title || `S${fav.season} • E${fav.episode}`}</h2>
-                <button className="favorite-button" onClick={() => handleRemove(fav)}>
-                  Remove
-                </button>
+            <div key={`${fav.show_id}-${fav.season}-${fav.episode}`} className="favorite-row">
+              <div className="favorite-main">
+                <h3>{fav.title || `S${fav.season} • E${fav.episode}`}</h3>
+                <p>{fav.description || "No description available."}</p>
+                <div className="favorite-meta">
+                  <span>Show: {fav.title ? fav.title : fav.show_id}</span>
+                  <span>Saved: {new Date(fav.created_at).toLocaleDateString()}</span>
+                </div>
               </div>
-              <p>{fav.description || "No description available."}</p>
-              <div className="result-actions">
+              <div className="favorite-actions">
                 <button className="primary-btn" onClick={() => goToEpisode(fav)}>
-                  View Episode
+                  Play
+                </button>
+                <button className="clear-btn" onClick={() => handleRemove(fav)}>
+                  Remove
                 </button>
               </div>
             </div>

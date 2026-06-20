@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useData } from "../config/Data";
 import "../Styles/home.css";
 import Trending from "../Components/Trending";
@@ -31,6 +32,7 @@ export const Home = () => {
   const data = useData();
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [continueEpisodes, setContinueEpisodes] = useState([]);
+  const navigate = useNavigate();
   const isLoading = !data || data.length === 0;
 
   useEffect(() => {
@@ -85,7 +87,16 @@ export const Home = () => {
           {selectedShows.length > 0 ? (
             <div className="genre-grid">
               {selectedShows.map((show) => (
-                <article key={show.id} className="genre-card">
+                <article
+                  key={show.id}
+                  className="genre-card"
+                  onClick={() => navigate(`/podcast/${show.id}`)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") navigate(`/podcast/${show.id}`);
+                  }}
+                >
                   <img src={show.image} alt={show.title} />
                   <div className="genre-card-content">
                     <div className="genre-card-main">
@@ -108,19 +119,29 @@ export const Home = () => {
 
       <h1>Continue listening</h1>
       <div className="continue-list">
-        {continueItems.length > 0 ? (
-          continueItems.map((item) => (
-            <article key={item.key} className="continue-card">
-              <img src={item.image} alt={item.title || item.showTitle} />
-              <div className="continue-card-content">
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-                <span>Show: {item.showTitle || "Unknown show"}</span>
-                <span>Last visited: {formatDate(item.lastVisited)}</span>
-              </div>
-            </article>
-          ))
-        ) : (
+          {continueItems.length > 0 ? (
+            continueItems.map((item) => (
+              <article
+                key={item.key}
+                className="continue-card"
+                onClick={() => navigate(`/podcast/${item.showId}/season/${item.season}/episode/${item.episode}`)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ")
+                    navigate(`/podcast/${item.showId}/season/${item.season}/episode/${item.episode}`);
+                }}
+              >
+                <img src={item.image} alt={item.title || item.showTitle} />
+                <div className="continue-card-content">
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                  <span>Show: {item.showTitle || "Unknown show"}</span>
+                  <span>Last visited: {formatDate(item.lastVisited)}</span>
+                </div>
+              </article>
+            ))
+          ) : (
           <div className="continue-empty">No unfinished episodes yet. Start listening to pick up where you left off.</div>
         )}
       </div>
