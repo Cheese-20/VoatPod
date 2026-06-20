@@ -3,6 +3,8 @@ import { PodNavigation } from "../Components/navigation";
 import "../Styles/profile.css";
 import Supabase from "../config/SupabaseClient";
 
+
+
 export const Profile = () => {
   const mail = localStorage.getItem("EmailVal");
   const [name, setName] = useState("");

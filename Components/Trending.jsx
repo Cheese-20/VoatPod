@@ -27,7 +27,7 @@ const Trending = ()=>{
 
     return (
         randomPodcast.map((podcast) => (
-        <PCBig key={podcast.id} title={podcast.title} img={podcast.image} />
+        <PCBig key={podcast.id} id={podcast.id} title={podcast.title} img={podcast.image} />
     )));
     
 }

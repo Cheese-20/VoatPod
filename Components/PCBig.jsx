@@ -1,19 +1,27 @@
-import PropTypes from "prop-types";  // Import PropTypes
+import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 import "../Styles/PCBigs.css";
 
 export const PCBig = (props) => {
+    const navigate = useNavigate();
+
     return (
-        <div className="Big" style={{ backgroundImage: `url(${props.img})`, height:"39%", backgroundSize: "cover", backgroundPosition: "center" }}>
-            {/* <h2 className="identifier">#Trending</h2> */}
-            {/* <img src={props.img} alt={props.title} className="BGimg" /> */}
+        <div
+            className="Big"
+            style={{ backgroundImage: `url(${props.img})`, height: "39%", backgroundSize: "cover", backgroundPosition: "center" }}
+            onClick={() => navigate(`/podcast/${props.id}`)}
+            role="button"
+            aria-label={`Open details for ${props.title}`}
+        >
         </div>
     );
 };
 
 // Add PropTypes validation
 PCBig.propTypes = {
-    title: PropTypes.string.isRequired,  // 'title' should be a string and required
-    img: PropTypes.string.isRequired,    // Ensure img is a string (url)
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    img: PropTypes.string.isRequired,
 };
 
 

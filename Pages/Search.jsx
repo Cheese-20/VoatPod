@@ -50,11 +50,27 @@ export const SearchPod = () => {
             <div className="SearchResults">
                 {isSearched ? (
                     HandleSearch().map((podcast) => (
-                        <PodcastCard key={podcast.id} img={podcast.image} title={podcast.title} />
+                        <PodcastCard
+                            key={podcast.id}
+                            id={podcast.id}
+                            img={podcast.image}
+                            title={podcast.title}
+                            description={podcast.description}
+                            seasons={podcast.seasons}
+                            genres={podcast.genres}
+                        />
                     ))
                 ) : (
                     searchData.map((podcast) => (
-                        <PodcastCard key={podcast.id} img={podcast.image} title={podcast.title} />
+                        <PodcastCard
+                            key={podcast.id}
+                            id={podcast.id}
+                            img={podcast.image}
+                            title={podcast.title}
+                            description={podcast.description}
+                            seasons={podcast.seasons}
+                            genres={podcast.genres}
+                        />
                     ))
                 )}
             </div>
