@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "../Styles/Search.css";
+import { getFavoriteForEpisode, toggleFavoriteEpisode } from "../config/favorites";
+import { saveEpisodeProgress } from "../config/progress";
 
 export const EpisodeDetail = () => {
   const { id, seasonNumber, episodeNumber } = useParams();
@@ -9,6 +11,8 @@ export const EpisodeDetail = () => {
   const [episode, setEpisode] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [favoriteLoading, setFavoriteLoading] = useState(false);
 
   useEffect(() => {
     const fetchShow = async () => {
@@ -17,13 +21,41 @@ export const EpisodeDetail = () => {
         if (!response.ok) throw new Error("Unable to load show details.");
         const data = await response.json();
         setShowData(data);
+
         const season = Array.isArray(data.seasons)
           ? data.seasons.find((item) => String(item.season) === String(seasonNumber))
           : null;
+
         const selectedEpisode = season?.episodes?.find(
           (item) => String(item.episode) === String(episodeNumber)
         );
-        setEpisode(selectedEpisode || null);
+
+        if (selectedEpisode) {
+          setEpisode(selectedEpisode);
+          const userEmail = localStorage.getItem("EmailVal");
+          if (userEmail) {
+            const { data: favorite, error } = await getFavoriteForEpisode({
+              userEmail,
+              showId: id,
+              season: seasonNumber,
+              episode: episodeNumber,
+            });
+            if (!error && favorite) {
+              setIsFavorite(true);
+            }
+          }
+
+          saveEpisodeProgress({
+            showId: id,
+            season: seasonNumber,
+            episode: episodeNumber,
+            title: selectedEpisode.title,
+            description: selectedEpisode.description,
+            audioUrl: selectedEpisode.file,
+            updated: data.updated,
+            completed: false,
+          });
+        }
       } catch (err) {
         setError(err.message || "Could not load episode.");
       } finally {
@@ -33,6 +65,34 @@ export const EpisodeDetail = () => {
 
     fetchShow();
   }, [id, seasonNumber, episodeNumber]);
+
+  const handleFavoriteClick = async () => {
+    const userEmail = localStorage.getItem("EmailVal");
+    if (!userEmail) {
+      window.alert("Log in to add this episode to your favorites.");
+      return;
+    }
+
+    setFavoriteLoading(true);
+    const { error } = await toggleFavoriteEpisode({
+      userEmail,
+      showId: id,
+      season: seasonNumber,
+      episode: episodeNumber,
+      title: episode?.title,
+      description: episode?.description,
+      audioUrl: episode?.file,
+    });
+    setFavoriteLoading(false);
+
+    if (error) {
+      console.error(error);
+      window.alert("Could not update favorite status. Try again.");
+      return;
+    }
+
+    setIsFavorite((current) => !current);
+  };
 
   if (loading) {
     return (
@@ -63,16 +123,17 @@ export const EpisodeDetail = () => {
         &larr; Back
       </button>
       <div className="detail-header episode-header">
-        <div
-          className="detail-image"
-          style={{ backgroundImage: `url(${showData.image})` }}
-        />
+        <div className="detail-image" style={{ backgroundImage: `url(${showData.image})` }} />
         <div className="detail-meta">
-          <h1>{episode.title}</h1>
+          <div className="episode-title-row">
+            <h1>{episode.title}</h1>
+            <button className={isFavorite ? "favorite-btn active" : "favorite-btn"} onClick={handleFavoriteClick} disabled={favoriteLoading}>
+              {isFavorite ? "★" : "☆"}
+            </button>
+          </div>
           <div className="detail-tags">
             <span>{showData.title}</span>
             <span>Season {seasonNumber}</span>
-            <span>Episode {episodeNumber}</span>
           </div>
           <p>{episode.description || "No episode description available."}</p>
         </div>

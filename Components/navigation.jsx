@@ -9,6 +9,7 @@ export const  PodNavigation =()=>{
              <ul className="nav-links">
                     <li><a href="/Home">Home</a></li>
                     <li><a href="/Search">Search</a></li>
+                    <li><a href="/Favorites">Favorites</a></li>
                     <li><a href="/Profile">Profile</a></li>
              </ul>
         </header>

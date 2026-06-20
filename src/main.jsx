@@ -7,6 +7,7 @@ import {SearchPod} from '../Pages/Search'
 import {Profile} from '../Pages/Profile'
 import { PodcastDetail } from '../Pages/PodcastDetail'
 import { EpisodeDetail } from '../Pages/EpisodeDetail'
+import { Favorites } from '../Pages/Favorites'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -16,6 +17,7 @@ createRoot(document.getElementById('root')).render(
         <Route path='/Home' element={<Home />} />
         <Route path='/Search' element={<SearchPod />} />
         <Route path='/Profile' element={<Profile />} />
+        <Route path='/Favorites' element={<Favorites />} />
         <Route path='/podcast/:id' element={<PodcastDetail />} />
         <Route path='/podcast/:id/season/:seasonNumber/episode/:episodeNumber' element={<EpisodeDetail />} />
       </Routes>

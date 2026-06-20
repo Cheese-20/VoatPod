@@ -7,4 +7,94 @@
 .profile{
     background: linear-gradient(to right, #891609 ,#DFA06E);
     min-height: 100vh;
+    padding: 40px 20px;
+    color: #fff;
+}
+
+.profile-card {
+    max-width: 920px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 28px;
+    padding: 32px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.18);
+}
+
+.profile-card h1 {
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    margin-bottom: 24px;
+}
+
+.profile-form {
+    display: grid;
+    gap: 18px;
+}
+
+.profile-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: #f4f4f4;
+}
+
+.InputPro {
+    width: 100%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    padding: 14px 18px;
+    border-radius: 18px;
+    font-size: 1rem;
+}
+
+.InputPro:focus {
+    outline: none;
+    border-color: rgba(255,255,255,0.55);
+    background: rgba(255,255,255,0.13);
+}
+
+.profile-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 16px;
+}
+
+.primary-btn,
+.danger-btn {
+    padding: 14px 20px;
+    border-radius: 18px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.primary-btn {
+    background: rgba(255,255,255,0.18);
+    color: #fff;
+}
+
+.primary-btn:hover {
+    transform: translateY(-1px);
+}
+
+.danger-btn {
+    background: rgba(255, 71, 71, 0.18);
+    color: #fff;
+}
+
+.danger-btn:hover {
+    transform: translateY(-1px);
+}
+
+.profile-message {
+    margin-top: 18px;
+    padding: 16px 18px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 18px;
+    color: #fff;
 }

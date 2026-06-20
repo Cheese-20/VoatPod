@@ -14,6 +14,8 @@
     margin-top: 15px;
     display: flex;
     justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .SearchBox{
@@ -21,9 +23,10 @@
     border: none;
     width:70%;
     color: #ffff;
-    height: 30px;
+    height: 36px;
     font-size: large;
     border-bottom: 1px solid #ffff;
+    padding: 0 10px;
 }
 
 .SearchWrapper {
@@ -31,12 +34,44 @@
     display: flex;
 }
 
-
 .SearchButton {
     border: none;
     cursor: pointer;
-    width : 20px;
-    height : 20px;
+    width : 24px;
+    height : 24px;
+}
+
+.filter-panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    margin: 20px auto 0 auto;
+    max-width: 920px;
+    padding: 0 20px;
+}
+
+.filter-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-field label {
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.filter-field select {
+    border-radius: 14px;
+    padding: 10px 12px;
+    border: 1px solid rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+}
+
+.filter-field select option {
+    color: #000;
 }
 
 .SearchResults{
@@ -75,8 +110,10 @@
 }
 
 .detail-image {
-    width: min(760px, 100%);
+    flex: 1 1 48%;
+    min-width: 320px;
     min-height: 420px;
+    aspect-ratio: 4 / 3;
     border-radius: 30px;
     background-size: cover;
     background-position: center;
@@ -94,9 +131,8 @@
 }
 
 .detail-meta {
-    flex: 1;
+    flex: 1 1 48%;
     min-width: 320px;
-    max-width: 760px;
 }
 
 .detail-meta h1 {
