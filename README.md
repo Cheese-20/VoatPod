@@ -4,14 +4,26 @@ VoatPod is a podcast discovery web app with show browsing, episode playback, fav
 
 ## Key Features & Pages 
 
+- Login and Signup
+  <img width="966" height="509" alt="Screenshot 2026-06-21 at 01 05 28" src="https://github.com/user-attachments/assets/9e4455eb-a9e6-47ba-8597-8395c59070d3" />
+
 - Home page with trending shows, genre filtering, and continue listening progress
   <img width="965" height="510" alt="Screenshot 2026-06-21 at 01 15 28" src="https://github.com/user-attachments/assets/7f9bf026-793f-446c-b1b8-ee214d430a25" />
 
 - Podcast detail page with season/episode selection
+   <img width="942" height="653" alt="Screenshot 2026-06-21 at 01 17 33" src="https://github.com/user-attachments/assets/9d4ad7b7-feae-474c-8800-b4b2787b3ad8" />
+
 - Episode detail page with audio playback and favorite toggle
+  <img width="946" height="645" alt="Screenshot 2026-06-21 at 01 16 24" src="https://github.com/user-attachments/assets/7eaade7f-36de-4343-bbb9-4a1c051797c6" />
 - Search page with sorting and filtering
+  <img width="964" height="664" alt="Screenshot 2026-06-21 at 01 18 09" src="https://github.com/user-attachments/assets/2272b8d0-d070-4bec-a38b-7ba320dbe61c" />
+
 - Favorites page that loads saved episodes from Supabase
+  <img width="962" height="427" alt="Screenshot 2026-06-21 at 01 18 32" src="https://github.com/user-attachments/assets/521934fc-ddef-49c5-9575-39a2faa4d4e4" />
+
 - User profile management and account actions
+  <img width="952" height="615" alt="Screenshot 2026-06-21 at 01 18 49" src="https://github.com/user-attachments/assets/c34655b5-7a09-410c-9db7-bd91d72c716a" />
+
 - Persisted listening progress in `localStorage`
 
 ## Tech Stack
