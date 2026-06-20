@@ -37,7 +37,9 @@ export const EpisodeDetail = () => {
   if (loading) {
     return (
       <div className="search">
-        <div className="loader"></div>
+        <div className="loader-wrapper">
+          <div className="loader"></div>
+        </div>
       </div>
     );
   }

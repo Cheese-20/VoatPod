@@ -71,19 +71,32 @@
     gap: 30px;
     align-items: flex-start;
     margin-bottom: 30px;
+    flex-wrap: wrap;
 }
 
 .detail-image {
-    width: min(380px, 100%);
-    min-height: 360px;
+    width: min(760px, 100%);
+    min-height: 420px;
     border-radius: 30px;
     background-size: cover;
     background-position: center;
     box-shadow: 0 25px 80px rgba(0,0,0,0.35);
+    border: 1px solid rgba(255,255,255,0.18);
+    position: relative;
+}
+
+.detail-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.35));
 }
 
 .detail-meta {
-    max-width: 720px;
+    flex: 1;
+    min-width: 320px;
+    max-width: 760px;
 }
 
 .detail-meta h1 {
@@ -92,9 +105,14 @@
 }
 
 .detail-meta p {
-    line-height: 1.7;
+    line-height: 1.85;
     font-size: 1rem;
     margin-bottom: 18px;
+    max-width: 100%;
+}
+
+.detail-header.episode-header .detail-meta p {
+    max-width: 100%;
 }
 
 .detail-tags {
@@ -151,12 +169,6 @@
     margin-bottom: 12px;
 }
 
-.note {
-    margin-top: 16px;
-    opacity: 0.85;
-    max-width: 760px;
-}
-
 .episode-item {
     list-style: none;
     background: rgba(255,255,255,0.08);
@@ -168,12 +180,14 @@
     gap: 18px;
     margin-bottom: 14px;
     cursor: pointer;
-    transition: transform 0.2s ease, background 0.2s ease;
+    border: 1px solid rgba(255,255,255,0.16);
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
 .episode-item:hover,
 .episode-item:focus-visible {
     background: rgba(255,255,255,0.16);
+    border-color: rgba(255,255,255,0.55);
     transform: translateY(-2px);
     outline: none;
 }
@@ -188,6 +202,19 @@
     list-style: none;
     padding: 18px 20px;
     color: rgba(255,255,255,0.8);
+}
+
+.loader-wrapper {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.note {
+    margin-top: 16px;
+    opacity: 0.85;
+    max-width: 760px;
 }
 
 .episode-player-section {

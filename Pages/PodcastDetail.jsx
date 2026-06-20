@@ -31,7 +31,9 @@ export const PodcastDetail = () => {
   if (loading) {
     return (
       <div className="search">
-        <div className="loader"></div>
+        <div className="loader-wrapper">
+          <div className="loader"></div>
+        </div>
       </div>
     );
   }
@@ -110,7 +112,6 @@ export const PodcastDetail = () => {
                   <strong>{episode.title}</strong>
                   <p>{episode.description}</p>
                 </div>
-                <span>Episode {episode.episode}</span>
               </li>
             ))
           ) : (
