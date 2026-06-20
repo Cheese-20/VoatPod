@@ -1,10 +1,12 @@
 # VoatPod
 
-VoatPod is a React + Vite podcast discovery web app with show browsing, episode playback, favorites, progress tracking, search, filter, and user profile management. 
+VoatPod is a podcast discovery web app with show browsing, episode playback, favorites, progress tracking, search, filter, and user profile management. 
 
-## Key Features
+## Key Features & Pages 
 
 - Home page with trending shows, genre filtering, and continue listening progress
+  <img width="965" height="510" alt="Screenshot 2026-06-21 at 01 15 28" src="https://github.com/user-attachments/assets/7f9bf026-793f-446c-b1b8-ee214d430a25" />
+
 - Podcast detail page with season/episode selection
 - Episode detail page with audio playback and favorite toggle
 - Search page with sorting and filtering
