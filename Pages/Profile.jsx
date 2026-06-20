@@ -27,7 +27,7 @@ export const Profile = () => {
       }
     };
     checkUserLogin();
-  }, []);
+  }, );
 
   const handleUpdate = () => {
     setChanged(true);
