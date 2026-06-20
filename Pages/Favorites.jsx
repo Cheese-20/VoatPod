@@ -85,28 +85,31 @@ export const Favorites = () => {
 
         {error && <div className="error-message">{error}</div>}
 
-        <div className="favorites-list">
-          {favorites.map((fav) => (
-            <div key={`${fav.show_id}-${fav.season}-${fav.episode}`} className="favorite-row">
-              <div className="favorite-main">
-                <h3>{fav.title || `S${fav.season} • E${fav.episode}`}</h3>
-                <p>{fav.description || "No description available."}</p>
-                <div className="favorite-meta">
-                  <span>Show: {fav.title ? fav.title : fav.show_id}</span>
-                  <span>Saved: {new Date(fav.created_at).toLocaleDateString()}</span>
+        {favorites.length > 0 && (
+          <div className="favorites-list">
+            {favorites.map((fav) => (
+              <div key={`${fav.show_id}-${fav.season}-${fav.episode}`} className="favorite-row">
+                <div className="favorite-main">
+                  <h3>{fav.title || `S${fav.season} • E${fav.episode}`}</h3>
+                  <p>{fav.description || "No description available."}</p>
+                  <div className="favorite-meta">
+                    <span>Show: {fav.title ? fav.title : fav.show_id}</span>
+                    <span>Saved: {new Date(fav.created_at).toLocaleDateString()}</span>
+                  </div>
+                </div>
+                <div className="favorite-actions">
+                  <button className="primary-btn" onClick={() => goToEpisode(fav)}>
+                    Play
+                  </button>
+                  <button className="clear-btn" onClick={() => handleRemove(fav)}>
+                    Remove
+                  </button>
                 </div>
               </div>
-              <div className="favorite-actions">
-                <button className="primary-btn" onClick={() => goToEpisode(fav)}>
-                  Play
-                </button>
-                <button className="clear-btn" onClick={() => handleRemove(fav)}>
-                  Remove
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
+
       </div>
     </div>
   );

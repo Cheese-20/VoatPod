@@ -364,3 +364,29 @@
     border-radius: 8px;
     cursor: pointer;
 }
+
+/* Base page container used by several pages */
+.page-container {
+    min-height: 100vh;
+    background: linear-gradient(to right, #891609 ,#DFA06E);
+}
+
+.page-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 28px 20px 60px 20px;
+    color: #fff;
+}
+
+.favorites-page h1 {
+    font-size: 2rem;
+    color: #fff;
+}
+
+.error-message {
+    color: #ffd2d2;
+    background: rgba(0,0,0,0.12);
+    padding: 10px 14px;
+    border-radius: 10px;
+    margin: 12px 20px;
+}
